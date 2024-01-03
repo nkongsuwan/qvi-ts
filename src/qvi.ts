@@ -47,16 +47,16 @@ export class QVI {
     ): Promise<any> {
         return await this.client
             .credentials()
-            .issue(
-                this.name,
-                this.registry,
-                schema.LE,
-                issuee,
-                data,
-                rules.LE,
-                edge,
-                false
-            );
+            .issue({
+                issuerName: this.name,
+                registryId: this.registry,
+                schemaId: schema.LE,
+                recipient: issuee,
+                data: data as unknown as Record<string, unknown>,
+                rules: rules.LE,
+                source: edge as unknown as Record<string, unknown>,
+                privacy: false
+            });
     }
 
     /**
@@ -74,16 +74,16 @@ export class QVI {
     ): Promise<any> {
         return await this.client
             .credentials()
-            .issue(
-                this.name,
-                this.registry,
-                schema.ECR,
-                issuee,
-                data,
-                rules.ECR,
-                edge,
-                false
-            );
+            .issue({
+                issuerName: this.name,
+                registryId: this.registry,
+                schemaId: schema.ECR,
+                recipient: issuee,
+                data: data as unknown as Record<string, unknown>,
+                rules: rules.ECR,
+                source: edge as unknown as Record<string, unknown>,
+                privacy: false
+            });
     }
 
     /**
@@ -101,15 +101,15 @@ export class QVI {
     ): Promise<any> {
         return await this.client
             .credentials()
-            .issue(
-                this.name,
-                this.registry,
-                schema.OOR,
-                issuee,
-                data,
-                rules.OOR,
-                edge,
-                false
-            );
+            .issue({
+                issuerName: this.name,
+                registryId: this.registry,
+                schemaId: schema.OOR,
+                recipient: issuee,
+                data: data as unknown as Record<string, unknown>,
+                rules: rules.OOR,
+                source: edge as unknown as Record<string, unknown>,
+                privacy: false
+            });
     }
 }
