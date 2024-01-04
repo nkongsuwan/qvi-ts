@@ -45,16 +45,16 @@ export class LE {
     ): Promise<any> {
         return await this.client
             .credentials()
-            .issue(
-                this.name,
-                this.registryAID,
-                schema.ECRAuth,
-                issuee,
-                data,
-                rules.ECRAuth,
-                edge,
-                false
-            );
+            .issue({
+                issuerName: this.name,
+                registryId: this.registryAID,
+                schemaId: schema.ECRAuth,
+                recipient: issuee,
+                data: data as unknown as Record<string, unknown>,
+                rules: rules.ECRAuth,
+                source: edge as unknown as Record<string, unknown>,
+                privacy: false
+            });
     }
 
     /**
@@ -72,16 +72,16 @@ export class LE {
     ): Promise<any> {
         return await this.client
             .credentials()
-            .issue(
-                this.name,
-                this.registryAID,
-                schema.OORAuth,
-                issuee,
-                data,
-                rules.OORAuth,
-                edge,
-                false
-            );
+            .issue({
+                issuerName: this.name,
+                registryId: this.registryAID,
+                schemaId: schema.OORAuth,
+                recipient: issuee,
+                data: data as unknown as Record<string, unknown>,
+                rules: rules.OORAuth,
+                source: edge as unknown as Record<string, unknown>,
+                privacy: false
+            });
     }
 
     /**

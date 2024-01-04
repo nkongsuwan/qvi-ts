@@ -35,18 +35,18 @@ describe('a legal entity', () => {
         let cap = capture(c.issue).last();
 
         verify(
-            c.issue(
-                'qvi_name',
-                'qvi_registry_aid',
-                'EH6ekLjSr8V32WyFbGe1zXjTzFs9PkTYmupJ9H65O14g',
-                'issuee aid',
-                anyOfClass(
+            c.issue({
+                issuerName: 'qvi_name',
+                registryId: 'qvi_registry_aid',
+                schemaId: 'EH6ekLjSr8V32WyFbGe1zXjTzFs9PkTYmupJ9H65O14g',
+                recipient: 'issuee aid',
+                data: anyOfClass(
                     credentials.EngagementContextRoleAuthorizationCredentialData
                 ),
-                rules.ECRAuth,
-                anyOfClass(edges.EngagementContextRoleAuthorizationEdge),
-                false
-            )
+                rules: rules.ECRAuth,
+                source: anyOfClass(edges.EngagementContextRoleAuthorizationEdge),
+                privacy: false
+            })
         ).once();
 
         let DATA_ARG = 4;
@@ -96,18 +96,18 @@ describe('a legal entity', () => {
         let cap = capture(c.issue).last();
 
         verify(
-            c.issue(
-                'qvi_name',
-                'qvi_registry_aid',
-                'EKA57bKBKxr_kN7iN5i7lMUxpMG-s19dRcmov1iDxz-E',
-                'issuee aid',
-                anyOfClass(
+            c.issue({
+                issuerName: 'qvi_name',
+                registryId: 'qvi_registry_aid',
+                schemaId: 'EKA57bKBKxr_kN7iN5i7lMUxpMG-s19dRcmov1iDxz-E',
+                recipient: 'issuee aid',
+                data: anyOfClass(
                     credentials.OfficialOrganizationalRoleAuthorizationCredentialData
                 ),
-                rules.OORAuth,
-                anyOfClass(edges.OfficialOrganizationalRoleAuthorizationEdge),
-                false
-            )
+                rules: rules.OORAuth,
+                source: anyOfClass(edges.OfficialOrganizationalRoleAuthorizationEdge),
+                privacy: false
+            })
         ).once();
 
         let DATA_ARG = 4;
